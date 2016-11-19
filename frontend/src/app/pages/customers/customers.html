@@ -1,0 +1,15 @@
+<!-- <div class="widgets"> -->
+
+
+  <div class="col-lg-12 col-md-12 .col-xs-12">
+    <!-- <ba-card title="" baCardClass="with-scroll table-panel"> -->
+      <customers-table></customers-table>
+    <!-- </ba-card> -->
+  </div>
+  
+  <div class="col-lg-12 col-md-12 .col-xs-12" *ngIf="_customersService.customerDetail">
+    <!-- <ba-card title="{{_customersService.customerDetail.name}}" baCardClass="with-scroll table-panel"> -->
+      <customer-detail></customer-detail>
+    <!-- </ba-card> -->
+  </div>
+<!-- </div> -->

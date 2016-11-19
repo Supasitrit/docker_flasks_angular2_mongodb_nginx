@@ -1,0 +1,124 @@
+newBooking{{diagnostic}}<br>
+selectedCustomers{{diagnostic2}}
+<ba-card title="Add Booking" baCardClass="with-scroll">
+  <form (ngSubmit)="onSubmit()" class="form-horizontal">
+    <div class="form-group row">
+      <label class="col-sm-2 form-control-label">Confirm status</label>
+      <div class="col-sm-10">
+        <ba-multi-checkbox (change)="onConfirmedChange()"[(ngModel)]="checkboxModel"
+          [propertiesMapping]="checkboxPropertiesMapping" name="confirmed">
+        </ba-multi-checkbox>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputName" class="col-sm-2 form-control-label">Check in</label>
+      <div class="col-sm-10">
+        <p class="form-control-static" *ngIf="newBooking.check_in">{{newBooking.check_in.substring(0,10)}}</p>
+        <input (change)="onchange($event)" type="date" class="form-control form-control-lg" id="input-check_in" placeholder="Check in date"
+        required
+        [(ngModel)]="newBooking.check_in" name="check_in">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputName" class="col-sm-2 form-control-label">Check out</label>
+      <div class="col-sm-10">
+        <p class="form-control-static" *ngIf="newBooking.check_out">{{newBooking.check_out.substring(0,10)}}</p>
+        <input (change)="onchange($event)" type="date" class="form-control form-control-lg" id="input-check_out" placeholder="Check out date"
+        [(ngModel)]="newBooking.check_out" name="check_out">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputName" class="col-sm-2 form-control-label">Deposit</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-lg" id="input-deposit" placeholder="Deposit"
+        [(ngModel)]="newBooking.deposit" name="deposit">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputName" class="col-sm-2 form-control-label">PPM</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control form-control-lg" id="input-PPM" placeholder="PPM"
+        [(ngModel)]="newBooking.ppm" name="PPM">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputName" class="col-sm-2 form-control-label">Room Type</label>
+      <div class="col-sm-10">
+        <!-- <input type="text" class="form-control form-control-lg" id="input-room_type" placeholder="room_type"
+        [(ngModel)]="newBooking.room_type" name="room_type"> -->
+        <select (change)="onchange($event)" class="form-control" id="exampleSelect1" [(ngModel)]="newBooking.room_type" name="room_type">
+          <option value = "1">
+            Standard (1 big + 1 small)
+          </option>
+          <option value = "2">
+            Standard (3 small)
+          </option>
+          <option value = "3">
+            VIP (1 big + 1 small)
+          </option>
+          <option value = "4">
+            Deluxe (1 big)
+          </option>
+          <option value = "5">
+            Deluxe (2 small)
+          </option>
+          <option value = "6">
+            Single (1 small)
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputName"  class="col-sm-2 form-control-label">Available Rooms</label>
+      <div  class="col-sm-10">
+        <button (click)="getAvailableRooms()" type="button" class="btn btn-info btn-raised">Fetch Available Rooms</button>
+        <select *ngIf="foundRooms" class="form-control" id="exampleSelect1" [(ngModel)]="newBooking.room_name" name="room_name">
+          <option *ngFor="let room of foundRooms">
+            {{room.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group row" *ngIf="selectedCustomers">
+      <label for="inputName" class="col-sm-2 form-control-label">Selected Customer(s)</label>
+      <div class="col-sm-10">
+        <div class="horizontal-scroll">
+          <table class="table table-bordered">
+            <tbody>
+              <tr *ngFor="let customer of selectedCustomers; let i = index">
+                <td>{{customer.name}}</td>
+                <td>{{customer.email}}</td>
+                <td>
+                  <button (click)="deleteFromSelectedCustomers(i)" type="button" class="btn btn-default btn-raised">Remove</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <!-- <ba-card title="Customer List" baCardClass="with-scroll"> -->
+        <label for="inputName" class="col-sm-2 form-control-label">Choose Customer(s)</label>
+        <div class="col-sm-10">
+          <!-- <input type="text" class="form-control form-control-lg" id="input-customers_id" placeholder="customers id"
+          [(ngModel)]="newBooking.customers_id" name="customers_id"> -->
+          <div class="horizontal-scroll">
+            <ng2-smart-table [settings]="settings" [source]="source"
+              (userRowSelect)="onUserRowSelect($event)"
+              (deleteConfirm)="onDeleteConfirm($event)">
+            </ng2-smart-table>
+          </div>
+        </div>
+      <!-- </ba-card> -->
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" class="btn btn-warning">
+        <i class="ion-archive"></i> Save</button>
+        <p *ngIf="error"> input error: {{errorMessage}} </p>
+      </div>
+    </div>
+  </form>
+</ba-card>

@@ -1,0 +1,127 @@
+<!-- <ba-card   baCardClass="with-scroll table-panel" > -->
+  <div class="horizontal-scroll"  *ngIf="_roomsService.roomDetail">
+    <div class="row">
+      <ba-card title="Room Detail of {{_roomsService.roomDetail.name}}" baCardClass="with-scroll table-panel">
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td>Name</td>
+              <td>{{_roomsService.roomDetail.name}}</td>
+            </tr>
+            <tr>
+              <td>Booking History</td>
+              <td>
+                <button (click)="toggleBookingHistory()" ngClass="status-button btn btn-xs btn-info">Show</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Building</td>
+              <td>{{_roomsService.roomDetail.building}}</td>
+            </tr>
+            <!-- <tr>
+              <td>Description</td>
+              <td>{{_roomsService.roomDetail.description}}</td>
+            </tr> -->
+            <tr>
+              <td>Maintenance History</td>
+              <td>
+                <button (click)="toggleMaintenanceHistory()"ngClass="status-button btn btn-xs btn-info">Show</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Room Number</td>
+              <td>{{_roomsService.roomDetail.room_number}}</td>
+            </tr>
+            <tr>
+              <td>Room State</td>
+              <td>{{_roomsService.roomDetail.room_state}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ba-card>
+    </div>
+  <!-- Booking History -->
+  <div class="row">
+    <ba-card title="Bookings" baCardClass="with-scroll table-panel" *ngIf="_showBookingHistory" >
+      <table  class="table table-striped">
+        <thead>
+          <tr>
+            <td>Check in</td>
+            <td>Check out</td>
+            <td>Confirmed</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let history of _roomsService.roomDetail.booking_history" class="{{confirmedStatus(history.confirmed)}}">
+            <td> {{history.check_in.substring(0,10)}} </td>
+            <td> {{history.check_out.substring(0,10)}} </td>
+            <td> {{history.confirmed}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </ba-card>
+  </div>
+  <!-- Maintenance History -->
+  <div class="row">
+    <ba-card title="Maintenance History" baCardClass="with-scroll table-panel" *ngIf="_showMaintenanceHistory" >
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td>Title</td>
+            <td>Created on</td>
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let history of _roomsService.roomDetail.maintenance_history">
+            <td> {{history.title}} </td>
+            <td> {{history.created_at.substring(0,10)}} </td>
+          </tr>
+        </tbody>
+      </table>
+    </ba-card>
+  </div>
+  <!-- Current Booking -->
+  <div class="row" *ngIf="_roomsService.roomDetail.current_booking">
+    <ba-card title="Current Booking" baCardClass="with-scroll table-panel">
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <td>Check In</td>
+            <td>{{_roomsService.roomDetail.current_booking.check_in}}</td>
+          </tr>
+          <tr>
+            <td>Check Out</td>
+            <td>{{_roomsService.roomDetail.current_booking.check_out}}</td>
+          </tr>
+          <tr>
+            <td>Confirm</td>
+            <td>{{_roomsService.roomDetail.current_booking.confirmed}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ba-card>
+  </div>
+    <!-- Current Customer -->
+  <div class="row" *ngIf="_roomsService.roomDetail.current_booking">
+    <ba-card title="Current Customer" baCardClass="with-scroll table-panel">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Customer State</td>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let customer of _roomsService.roomDetail.current_booking.customers">
+              <td>{{customer.name}}</td>
+              <td>{{customer.email}}</td>
+              <td>{{customer.customer_state}}</td>
+            </tr>
+        </tbody>
+      </table>
+    </ba-card>
+  </div>
+
+</div>
+<!-- </ba-card> -->

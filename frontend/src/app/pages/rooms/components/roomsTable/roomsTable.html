@@ -1,0 +1,29 @@
+<!-- <div class="row"> -->
+  <ba-card title="List"  baCardClass="with-scroll table-panel">
+    <!-- <div class="horizontal-scroll">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>Building</th>
+          <th>Room Name</th>
+          <th>Room Number</th>
+          <th>Room State</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let room of foundRooms" (click)="showDetails(room)">
+          <td>{{ room.building }}</td>
+          <td>{{ room.name }}</td>
+          <td>{{ room.room_number }}</td>
+          <td>{{ room.room_state }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div> -->
+    <ng2-smart-table [settings]="settings" [source]="source"
+      (userRowSelect)="onUserRowSelect($event)"
+      (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </ba-card>
+
+<!-- </div> -->

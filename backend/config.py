@@ -1,0 +1,12 @@
+CSRF_ENABLED = True
+WTF_CSRF_ENABLED = True
+SECRET_KEY = "ams"
+MONGODB_DB = "ams-sih"
+MONGODB_HOST = "mongodb"
+UPLOADS_DEFAULT_DEST = '/var/uploads'
+UPLOAD_FOLDER = '/usr/share/nginx/html/'
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 465
+MAIL_USE_SSL = True
+MAIL_USERNAME = 'vorathep055@gmail.com'
+MAIL_PASSWORD = 'vorathepoo7'

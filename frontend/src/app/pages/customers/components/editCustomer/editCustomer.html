@@ -1,0 +1,58 @@
+<div class="row">
+  <ba-card title="" baCardClass="with-scroll large-buttons-panel">
+    <div class="row btns-row btns-same-width-lg">
+      <div class="col-sm-2 col-xs-2">
+        <button (click)="goToCustomers()"type="button" class="btn btn-default btn-raised">
+          Back
+        </button>
+      </div>
+    </div>
+  </ba-card>
+</div>
+<div *ngIf = "customer">
+  {{diagnostic}}
+  {{customer_id}}
+  {{shareService.currentCustomer}}
+  {{customer.name}}
+  <ba-card title="Add Customer" baCardClass="with-scroll">
+    <form (ngSubmit)="onSubmit()" class="form-horizontal">
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-2 form-control-label">Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control form-control-lg" id="input-name" placeholder="{{customer.name}}"
+          required
+          [(ngModel)]="editCustomer.name" name="name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-2 form-control-label">Email</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control form-control-lg" id="input-email" placeholder="{{customer.email}}"
+          [(ngModel)]="editCustomer.email" name="email">
+
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-2 form-control-label">Phone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control form-control-lg" id="input-phone" placeholder="{{customer.phone}}"
+          [(ngModel)]="editCustomer.phone_number" name="phone">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-2 form-control-label">Facebook</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control form-control-lg" id="input-facebook" placeholder="{{customer.facebook}}"
+          [(ngModel)]="editCustomer.facebook" name="facebook">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+          <button type="submit" class="btn btn-warning">
+          <i class="ion-archive"></i> Save</button>
+          <p *ngIf="error"> input error </p>
+        </div>
+      </div>
+    </form>
+  </ba-card>
+</div>

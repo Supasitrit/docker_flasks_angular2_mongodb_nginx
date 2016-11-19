@@ -1,0 +1,143 @@
+<style>
+  .row-title {
+    width: 50%;
+  }
+</style>
+<div class="row">
+  <ba-card title="" baCardClass="with-scroll large-buttons-panel">
+    <div class="row btns-row btns-same-width-lg">
+      <div class="col-sm-2 col-xs-2">
+        <button (click)="goToAddBooking()"type="button" class="btn btn-default btn-raised">
+          Add
+        </button>
+      </div>
+    </div>
+  </ba-card>
+</div>
+<div class="row">
+  <ba-card title="Booking List" baCardClass="with-scroll table-panel">
+    <!-- <div class="horizontal-scroll">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Room</th>
+            <th>Checkin</th>
+            <th>Checkout</th>
+            <th>Confirm Status</th>
+            <th># of Customers</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let booking of foundBookings" class="{{confirmedStatus(booking.confirmed)}}"  (click)="getBookingDetails(booking)">
+          <td class="">{{booking.room_name}}</td>
+          <td class="">{{booking.check_in.substring(0,10)}}</td>
+          <td class="">{{booking.check_out.substring(0,10)}}</td>
+          <td class="">{{booking.confirmed}}</td>
+          <td class="" *ngIf="booking.customers">{{booking.customers.length}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div> -->
+    <ng2-smart-table [settings]="settings" [source]="source"
+      (userRowSelect)="onUserRowSelect($event)"
+      (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </ba-card>
+</div>
+<div class="row">
+  <ba-card title="Customer List" baCardClass="with-scroll table-panel" *ngIf="showBookingDetail && foundBookingDetail">
+    <div class="horizontal-scroll">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Email</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of foundBookingDetail.customers">
+              <td class="">{{customer.name}}</td>
+              <td class="">{{customer.email}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ba-card>
+</div>
+
+<div class="row">
+  <ba-card title="Booking Detail" baCardClass="with-scroll table-panel" *ngIf="showBookingDetail && foundBookingDetail">
+    <div class="horizontal-scroll">
+      <table class="table table-hover">
+        <tbody>
+        <tr>
+          <td class="row-title">Checkin</td>
+          <td class="row-content" *ngIf="foundBookingDetail.check_in">{{foundBookingDetail.check_in.substring(0,10)}}</td>
+        </tr>
+        <tr>
+          <td class="row-title">Checkout</td>
+          <td class="" *ngIf="foundBookingDetail.check_out">{{foundBookingDetail.check_out.substring(0,10)}}</td>
+        </tr>
+        <tr  class="{{confirmedStatus(foundBookingDetail.confirmed)}}" >
+          <td class="row-title">Confirmed</td>
+          <td *ngIf="foundBookingDetail.confirmed">{{foundBookingDetail.confirmed}}</td>
+        </tr>
+        <tr>
+          <td class="row-title">Created at</td>
+          <td class="" *ngIf="foundBookingDetail.created_at">{{foundBookingDetail.created_at.substring(0,10)}}</td>
+        </tr>
+        <!-- <tr>
+          <td class="row-title">Created by</td>
+          <td class="" *ngIf="foundBookingDetail.created_by.name">{{foundBookingDetail.created_by.name}}</td>
+        </tr> -->
+        <tr>
+          <td class="row-title">Deposit</td>
+          <td class="">{{foundBookingDetail.deposit}}</td>
+        </tr>
+        <tr>
+          <td class="row-title">Modiefied at</td>
+          <td class="" *ngIf="foundBookingDetail.modiefied_at">{{foundBookingDetail.modiefied_at.substring(0,10)}}</td>
+        </tr>
+        <tr>
+          <td class="row-title">PPM</td>
+          <td class="">{{foundBookingDetail.ppm}}</td>
+        </tr>
+        <tr>
+          <td class="row-title">Room Name</td>
+          <td class="">{{foundBookingDetail.room_name}}</td>
+        </tr>
+        <tr>
+          <td class="row-title">Room Type</td>
+          <td class="">{{foundBookingDetail.room_type}}</td>
+        </tr>
+        </tbody>
+      </table>
+      <table *ngIf="foundBookingDetail.customers" class="table table-striped">
+        <tbody>
+          <tr *ngFor="let customer of foundBookingDetail.customers">
+            <td class="row-title">Customer</td>
+            <td class="" *ngIf="foundBookingDetail.customers">{{customer.name}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-sm-2 col-xs-2">
+          <button (click)="goToEditBooking(foundBookingDetail)" type="button" class="btn btn-default btn-raised">
+            Edit
+          </button>
+        </div>
+        <div class="col-sm-2 col-xs-2">
+          <button (click)="askConfirmDelete()" type="button" class="btn btn-default btn-raised">
+            Delete
+          </button>
+        </div>
+      </div>
+      <div *ngIf="shareService._askConfirmDelete">
+        <p>Cick confirm to delete this booking record<p>
+        <button (click)="deleteBooking(foundBookingDetail.booking_id)" type="button" class="btn btn-default btn-raised">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </ba-card>
+</div>

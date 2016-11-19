@@ -1,0 +1,38 @@
+<!-- <div class="horizontal-scroll">
+  <table class="table table-condensed">
+    <thead>
+    <tr>
+        <th>Email</th>
+        <th>Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of foundCustomers" (click)="showDetails(customer.customer_id)">
+      <td class="">{{customer.email}}</td>
+      <td class="">{{customer.name}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div> -->
+<div class="row">
+  <ba-card title="" baCardClass="with-scroll large-buttons-panel">
+    <div class="row btns-row btns-same-width-lg">
+      <div class="col-sm-2 col-xs-2">
+        <button *ngIf="!shareService.hideCustomerList"(click)="goToAddCustomer()"type="button" class="btn btn-default btn-raised">
+          Add
+        </button>
+        <button *ngIf="shareService.hideCustomerList" (click)="showCustomerList()"type="button" class="btn btn-default btn-raised">
+          Back
+        </button>
+      </div>
+    </div>
+  </ba-card>
+</div>
+<div class="row" *ngIf = "!shareService.hideCustomerList">
+  <ba-card title="Customer List" baCardClass="with-scroll">
+    <ng2-smart-table [settings]="settings" [source]="source"
+      (userRowSelect)="onUserRowSelect($event)"
+      (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </ba-card>
+</div>

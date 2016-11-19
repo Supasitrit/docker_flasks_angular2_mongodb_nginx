@@ -1,0 +1,59 @@
+<div class="row">
+  <ba-card title="" baCardClass="with-scroll large-buttons-panel">
+    <div class="row btns-row btns-same-width-lg">
+      <div class="col-sm-2 col-xs-2">
+        <button (click)="goToAddMaintenance()"type="button" class="btn btn-default btn-raised">
+          Add
+        </button>
+      </div>
+    </div>
+  </ba-card>
+</div>
+<!-- <div class="row">
+
+</div> -->
+<div class="row">
+  <ba-card title="" class="col-lg-6 col-md-6" *ngIf="showImage" baCardClass="with-scroll large-buttons-panel">
+    <img *ngIf="imageUrl" src="{{imageUrl}}" width="100%"alt="image not found">
+    <button (click)="goToEditMaintenance()" type="button" class="btn btn-default btn-raised">
+      Edit this record
+    </button>
+  </ba-card>
+</div>
+<div class="row">
+  <ba-card title="" class="col-lg-12 col-md-12" baCardClass="with-scroll table-panel">
+    <!-- <div class="horizontal-scroll">
+      <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Created at</th>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let maintenance of foundmaintenances; let i = index" (click)="goToDetails(maintenance)">
+          <td class="">{{maintenance.created_at}}</td>
+          <td class="">{{maintenance.title}}</td>
+          <td class="">
+            <button (click)="changeImage(maintenance.image)" type="button" class="btn btn-default btn-info">show</button>
+          </td>
+          <td class="">
+            <button (click)="goToEditMaintenance(maintenance)" type="button" class="btn btn-default btn-raised">
+              Edit
+            </button>
+            <button (click)="onDeleteConfirm($event)" type="button" class="btn btn-default btn-raised">
+              Delete
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div> -->
+    <ng2-smart-table [settings]="settings" [source]="source"
+      (userRowSelect)="onUserRowSelect($event)"
+      (deleteConfirm)="onDeleteConfirm($event)">
+    </ng2-smart-table>
+  </ba-card>
+</div>

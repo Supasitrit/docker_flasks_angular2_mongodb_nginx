@@ -1,0 +1,47 @@
+<div *ngIf="shareService.showCustomerDetail" class="row">
+  <ba-card title="{{_customersService.customerDetail.name}}" baCardClass="with-scroll table-panel">
+    <div class="horizontal-scroll" >
+      <table title="{{_customersService.customerDetail.name}}"class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th *ngIf="_customersService.customerDetail.facebook">Facebook</th>
+            <th *ngIf="_customersService.customerDetail.phone">Phone</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td class="">
+            {{_customersService.customerDetail.name}}
+          </td>
+          <td class="">
+            {{_customersService.customerDetail.email}}
+          </td>
+          <td *ngIf="_customersService.customerDetail.facebook" class="">
+            {{_customersService.customerDetail.facebook}}
+          </td>
+          <td *ngIf="_customersService.customerDetail.phone" class="">
+            {{_customersService.customerDetail.phone}}
+          </td>
+          <td class="">
+            <button type="button" (click)="goToEditCustomer()" class="btn btn-default btn-raised">
+              Edit
+            </button>
+            <button (click)="askConfirmDelete()" type="button" class="btn btn-default btn-raised">
+              Delete
+            </button>
+            <div *ngIf="shareService._askConfirmDelete">
+              <p>Cick confirm to delete this customer record<p>
+              <button (click)="deleteCustomer(_customersService.customerDetail.customer_id)" type="button" class="btn btn-default btn-raised">
+                Confirm
+              </button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </ba-card>
+</div>
