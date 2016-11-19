@@ -1,11 +1,11 @@
-FROM ubuntu:14.04
+# FROM ubuntu:14.04
 
 FROM node:latest
 
 WORKDIR /app
 
-RUN apt-get update
-RUN apt-get -y update
+# RUN apt-get update
+# RUN apt-get -y update
 
 ADD ./frontend/package.json /app/package.json
 #
