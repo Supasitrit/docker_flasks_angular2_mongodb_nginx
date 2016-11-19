@@ -3,7 +3,8 @@ import {Http, Headers} from '@angular/http';
 import {tokenService} from './tokenService';
 
 const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'development';
-const urlPrefix = env === 'production' ? 'http://localhost/ams/' : 'http://45.55.158.15/ams/';
+// const urlPrefix = env === 'production' ? 'http://128.199.104.193/ams/' : 'http://localhost/ams/';
+const urlPrefix = 'http://localhost/ams/';
 
 
 @Injectable()

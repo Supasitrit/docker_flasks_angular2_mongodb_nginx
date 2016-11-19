@@ -4,14 +4,14 @@ services:
   backend:
     build:
       context: .
-      dockerfile: ./ams-backend/Dockerfile
+      dockerfile: ./backend/Dockerfile
     links:
       - mongodb
 
   frontend:
     build:
       context: .
-      dockerfile: ./new-ams-frontend/Dockerfile
+      dockerfile: ./frontend/Dockerfile
 
   nginx:
     ports:
@@ -24,8 +24,5 @@ services:
       - frontend
 
   mongodb:
-    build:
-      context: .
-      dockerfile: ./mongodb/Dockerfile
-    ports:
-      - 27017:27017
+    image: mongo
+    restart: unless-stopped

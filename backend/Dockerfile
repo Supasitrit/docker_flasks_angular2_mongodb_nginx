@@ -4,11 +4,11 @@ RUN apt-get update -y
 RUN apt-get install -y python-pip python-dev build-essential
 
 WORKDIR /app
-ADD ./ams-backend/requirements.txt /app/ams-backend/requirements.txt
-RUN pip install -r ams-backend/requirements.txt
+ADD ./backend/requirements.txt /app/requirements.txt
+RUN pip install -r /app/requirements.txt
 COPY . /app
 # ENTRYPOINT ["python"]
 # RUN ls -la
-CMD ["/app/ams-backend/run.py"]
+CMD ["/app/backend/run.py"]
 
 EXPOSE 9000
