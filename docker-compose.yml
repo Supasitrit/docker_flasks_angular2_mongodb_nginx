@@ -1,0 +1,31 @@
+version: '2'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./ams-backend/Dockerfile
+    links:
+      - mongodb
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./new-ams-frontend/Dockerfile
+
+  nginx:
+    ports:
+      - 80:80
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    links:
+      - backend
+      - frontend
+
+  mongodb:
+    build:
+      context: .
+      dockerfile: ./mongodb/Dockerfile
+    ports:
+      - 27017:27017
