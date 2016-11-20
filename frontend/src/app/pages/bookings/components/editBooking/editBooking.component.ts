@@ -87,21 +87,23 @@ export class editBooking implements OnInit {
     this.newBooking = new CreateBookingRequest();
     console.log(this.shareService.currentBooking);
 
-    // get the editing booking attributes
-    this.newBooking.booking_id = this.shareService.currentBooking.booking_id;
-    this.newBooking.check_in = this.shareService.currentBooking.check_in;
-    this.newBooking.check_out = this.shareService.currentBooking.check_out;
-    this.newBooking.confirmed = this.shareService.currentBooking.confirmed;
-    this.newBooking.deposit = this.shareService.currentBooking.deposit;
-    this.newBooking.ppm = this.shareService.currentBooking.ppm;
-    this.newBooking.room_name = this.shareService.currentBooking.room_name;
-    this.newBooking.room_type = this.shareService.currentBooking.room_type;
-    this.checkboxModel[0].checked = this.newBooking.confirmed;
-    // this.newBooking.customer_ids = [];
-    for(var i=0;i<this.shareService.currentBooking.customers.length;i++){
-      this.selectedCustomers.push(this.shareService.currentBooking.customers[i]);
+    if(this.shareService.currentBooking){
+      // get the editing booking attributes
+      this.newBooking.booking_id = this.shareService.currentBooking.booking_id;
+      this.newBooking.check_in = this.shareService.currentBooking.check_in;
+      this.newBooking.check_out = this.shareService.currentBooking.check_out;
+      this.newBooking.confirmed = this.shareService.currentBooking.confirmed;
+      this.newBooking.deposit = this.shareService.currentBooking.deposit;
+      this.newBooking.ppm = this.shareService.currentBooking.ppm;
+      this.newBooking.room_name = this.shareService.currentBooking.room_name;
+      this.newBooking.room_type = this.shareService.currentBooking.room_type;
+      this.checkboxModel[0].checked = this.newBooking.confirmed;
+      // this.newBooking.customer_ids = [];
+      for(var i=0;i<this.shareService.currentBooking.customers.length;i++){
+        this.selectedCustomers.push(this.shareService.currentBooking.customers[i]);
+      }
+      this.selectedCustomers = this.shareService.currentBooking.customers;
     }
-    this.selectedCustomers = this.shareService.currentBooking.customers;
   }
   error = false;
   // TODO: Remove this when we're done
@@ -198,7 +200,8 @@ export class editBooking implements OnInit {
       )
   }
   ngOnInit() {
-    if(this.shareService.currentBooking == null){
+    console.log(this._bookingsService.editingBooking);
+    if(!this._bookingsService.editingBooking){
       this.router.navigate(['pages/bookings']);
     }
     this.getAvailableCustomers();

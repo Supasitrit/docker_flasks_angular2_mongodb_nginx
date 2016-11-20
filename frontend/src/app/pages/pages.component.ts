@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
     <div class="al-main">
       <div class="al-content">
         <ba-content-top></ba-content-top>
-        <router-outlet></router-outlet>
+        <router-outlet *ngIf="tokenExist"></router-outlet>
       </div>
     </div>
     <footer class="al-footer clearfix">
@@ -31,14 +31,19 @@ import { Router } from '@angular/router';
     `
 })
 export class Pages implements OnInit {
-
+  tokenExist: boolean;
   constructor(private tokenService: tokenService, private router: Router) {
+    this.tokenExist=false;
   }
 
   ngOnInit() {
     // console.log(this.tokenService.getToken());
     if (!this.tokenService.getToken()){
+      //no token
       this.router.navigate(['login']);
+    }else{
+      //token exist
+      this.tokenExist = true;
     }
   }
 }

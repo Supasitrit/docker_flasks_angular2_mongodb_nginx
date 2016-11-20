@@ -7,10 +7,10 @@ const routes: Routes = [
     path: '',
     component: rooms
   },
-  {
-    path: ':room_name',
-    component: bookingHistory
-  }
+  // {
+  //   path: ':room_name',
+  //   component: bookingHistory
+  // }
 ];
 
 export const routing = RouterModule.forChild(routes);

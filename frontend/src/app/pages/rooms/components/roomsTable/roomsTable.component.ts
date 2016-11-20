@@ -44,7 +44,7 @@ export class roomsTable implements OnInit {
         type: 'string'
       },
       room_number:{
-        title: 'Room Name',
+        title: 'Room Number',
         type: 'string'
       },
       // name: {

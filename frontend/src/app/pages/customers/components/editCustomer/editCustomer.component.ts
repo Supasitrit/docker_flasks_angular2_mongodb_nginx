@@ -20,8 +20,10 @@ export class editCustomer implements OnInit {
     this.editCustomer = new EditCustomerRequest();
     this.editCustomer.id = this.customer_id;
     this.customer_id = this.shareService.currentCustomerId;
-    this.editCustomer = this.shareService.currentCustomer;
-    this.customer =  this.shareService.currentCustomer;
+    if (this.shareService.currentCustomer){
+      this.editCustomer = this.shareService.currentCustomer;
+      this.customer =  this.shareService.currentCustomer;
+    }
   }
   error = false;
   goToCustomers() {

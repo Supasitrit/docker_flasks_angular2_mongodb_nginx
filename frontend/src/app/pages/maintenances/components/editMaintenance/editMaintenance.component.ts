@@ -27,10 +27,12 @@ export class editMaintenance implements OnInit {
   constructor(fb:FormBuilder, private _maintenancesService: maintenancesService, private router: Router,
     private shareService: shareService, private roomsService:roomsService) {
     this.editMaintenance = new EditMaintenanceRequest();
-    this.editMaintenance.created_at = shareService.currentMaintenance.created_at.substring(0,10);
-    this.editMaintenance.title = shareService.currentMaintenance.title;
-    this.editMaintenance.photo = shareService.currentMaintenance.photo;
-    this.editMaintenance.room_name = shareService.currentMaintenance.room_name;
+    if(this.shareService.currentMaintenance){
+      this.editMaintenance.created_at = shareService.currentMaintenance.created_at.substring(0,10);
+      this.editMaintenance.title = shareService.currentMaintenance.title;
+      this.editMaintenance.photo = shareService.currentMaintenance.photo;
+      this.editMaintenance.room_name = shareService.currentMaintenance.room_name;
+    }
   }
   error = false;
 
@@ -69,6 +71,9 @@ export class editMaintenance implements OnInit {
         )
   }
   ngOnInit() {
+    if(!this.shareService.currentMaintenance){
+      this.router.navigate(['pages/maintenances']);
+    }
     this.getRooms();
   }
 }

@@ -9,6 +9,7 @@ export class shareService {
   currentCustomer:any;
   currentMaintenance:any;
   currentBooking:any;
+  editingBooking:boolean;
   _askConfirmDelete:boolean;
   hideCustomerList:boolean;
   showCustomerDetail:boolean;

@@ -92,6 +92,7 @@ export class bookingsTable implements OnInit {
   }
   goToEditBooking(booking){
       this.shareService.currentBooking = booking;
+      this._bookingsService.editingBooking = true;
       console.log(booking);
       this.router.navigate(['pages/bookings/edit']);
   }

@@ -19,9 +19,11 @@ import { Booking } from '../../../models/Booking';
 @Injectable()
 export class bookingsService {
   http:HttpClient;
+  editingBooking:boolean;
 
   constructor(private httpClient: HttpClient) {
     this.http = httpClient;
+    this.editingBooking = false;
   }
   public getBookingDetail(id):Observable<any>{
     return this.http.get("bookings/"+id)
