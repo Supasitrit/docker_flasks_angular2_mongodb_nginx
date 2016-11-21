@@ -46,8 +46,10 @@
   border-radius: 5px;
   background-color: $input-background;
   box-shadow: none;
-  font-size: 14px;
+  font-size: 12px;
   &:focus {
+    // form focus
+    color: white;
     box-shadow: none;
     border-color: $primary-bg;
     background: $input-background;
@@ -344,7 +346,8 @@ label.custom-input-danger {
   }
   .input-group-addon {
     background-color: $color;
-    color: $label-text;
+    // color: $label-text;
+    color: white;
   }
 }
 
