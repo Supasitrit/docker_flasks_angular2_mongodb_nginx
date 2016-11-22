@@ -31,6 +31,7 @@ def create_booking():
 	_booking.check_in = form.check_in_dt
 	_booking.check_out = form.check_out_dt
 	_booking.deposit = form.deposit.data
+	_booking.room_type = form.room_type.data
 	_booking.ppm = form.ppm.data
 	_booking.note = form.note.data
 	_booking.confirmed = form.confirmed.data
@@ -152,11 +153,11 @@ def booking_info(booking_id):
 	booking = marshal(_booking,BookingDetailOutput)
 	return jsonify(success=True,booking=booking)
 
-@app.route("/ams/bookings/<booking_id>/pdf-gen",methods=["GET"])
-@require_token
-def pdf():
-	create_pdf()
-	return "THis"
+# @app.route("/ams/bookings/<booking_id>/pdf-gen",methods=["GET"])
+# @require_token
+# def pdf():
+# 	create_pdf()
+# 	return "THis"
 
 # @app.route("/ams/bookings/<booking_id>",methods=['PUT'])
 # @require_token

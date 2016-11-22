@@ -13,6 +13,8 @@ BookingOutput = {
 	'check_in': fields.DateTime(dt_format='iso8601'),
 	'check_out': fields.DateTime(dt_format='iso8601'),
 	'room_name': fields.String,
+	'room_type':fields.Integer,
+	'created_at': fields.DateTime(dt_format='iso8601'),
 	'confirmed':fields.Boolean(default=False)
 }
 
@@ -24,11 +26,11 @@ BookingDetailOutput = {
 	'deposit': fields.Float,
 	'modified_at': fields.DateTime(dt_format='iso8601'),
 	'ppm':fields.Float,
-	'room_type':fields.String,
+	'room_type':fields.Integer,
 	'room_name':fields.String,
 	'created_at': fields.DateTime(dt_format='iso8601'),
 	'created_by':fields.Nested(UserOutput),
-	'confirmed':fields.Boolean
+	'confirmed':fields.Boolean(default=False)
 }
 
 DailyActivityOutput = {

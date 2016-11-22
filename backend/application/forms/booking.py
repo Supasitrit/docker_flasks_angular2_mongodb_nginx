@@ -16,7 +16,7 @@ class BookingForm(Form):
 	ppm = DecimalField("ppm")
 	note = StringField("note")
 	room_name = StringField("room_name")
-	room_type = StringField("room_type")
+	room_type = IntegerField("room_type")
 	def __init__(self,booking=None,is_edit=False, *args,**kwargs):
 		Form.__init__(self,*args,**kwargs)
 		self.customers = list()
