@@ -16,7 +16,7 @@ COPY . /app
 CMD ["/app/backend/run.py"]
 
 
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
 
 EXPOSE 9000
 EXPOSE 80 443
