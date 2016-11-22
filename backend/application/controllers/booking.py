@@ -94,7 +94,7 @@ def update_booking(booking_id):
 	_room = getRoomDetail(_booking.room_name)
 	_room.booking_history.remove(_booking)
 	for customer in _booking.customers:
-		customer.customer_state = ""
+		customer.customer_state = 1
 		customer.save()
 	_room = getRoomDetail(_booking.room_name)
 	_room.booking_history.remove(_booking)
@@ -118,7 +118,6 @@ def update_booking(booking_id):
 	_room.booking_history.append(_booking)
 	_room.current_booking = _booking
 	_room.modified_at = dt_now()
-	_room.room_state = "Occupied"
 	_room.save()
 	booking = marshal(_booking,BookingOutput)
 	return jsonify(success=True,booking=booking)
