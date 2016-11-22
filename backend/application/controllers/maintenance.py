@@ -1,5 +1,6 @@
 from application import app
 from flask import Flask, request, redirect, url_for,jsonify, g
+from flask import send_from_directory
 from application.decorators.token import *
 from flask_restful import marshal
 from application.utils.date_time import *
@@ -10,6 +11,8 @@ from application.utils.room import *
 from application.forms.maintenance import *
 from application.exceptions.simple_error import *
 
+serverUrl = "128.199.104.193"
+# serverUrl = "localhost"
 
 @app.route("/ams/maintenances",methods=["POST"])
 @require_token
@@ -19,7 +22,7 @@ def create_maintenance():
 	file = request.files['photo']
 	if file and allowed_file(file.filename):
 		img_url = upload_image(file,filename=file.filename)
-		img_url = "http://128.199.104.193/images/" + img_url
+		img_url = "http://"+serverUrl+"/ams/images/" + img_url
 		_maintenance.img_url = img_url
 	_maintenance.created_by = g.user
 	_maintenance.created_at = dt_now()
@@ -33,6 +36,11 @@ def create_maintenance():
 	_room.save()
 	maintenance = marshal(_maintenance,MaintenanceOutput)
 	return jsonify(success=True,maintenance=maintenance)
+
+@app.route("/ams/images/<filename>",methods=["GET"])
+def get_image(filename):
+	return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
 
 @app.route("/ams/maintenances",methods=["GET"])
 @require_token
@@ -67,7 +75,7 @@ def edit_maintenance(maintenance_id):
 	file = request.files['photo']
 	if file and allowed_file(file.filename):
 		img_url = upload_image(file,filename=file.filename)
-		img_url = "http://45.55.158.15/" + img_url
+		img_url = "http://"+serverUrl+"/" + img_url
 		_maintenance.img_url = img_url
 	_maintenance.created_by = g.user
 	_maintenance.modified_at = dt_now()
