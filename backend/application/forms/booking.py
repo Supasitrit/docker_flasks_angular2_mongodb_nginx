@@ -11,7 +11,7 @@ class BookingForm(Form):
 	customer_ids = StringField("customer_ids")
 	check_in = StringField("check_in")
 	check_out = StringField("check_out")
-	confirmed = BooleanField("confirmed")
+	confirmed = BooleanField("confirmed",false_values={False, 'false', ''})
 	deposit = DecimalField("deposit")
 	ppm = DecimalField("ppm")
 	note = StringField("note")
