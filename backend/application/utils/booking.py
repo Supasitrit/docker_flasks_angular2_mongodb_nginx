@@ -58,8 +58,9 @@ def bookingActivityForWeb(start_date,end_date):
 			for customer in res_in.customers:
 				res['title'] += customer.name
 				res['title'] += ","
+			res['title'] = res['title'][:-1]
 			res['color'] = "#00abff"
-			res['start'] = dt_to_string(res_in.check_out)
+			res['start'] = dt_to_string(res_in.check_in)
 			res['booking_id'] = str(res_in.id)
 			result.append(res)
 		for res_out in res_outs:
@@ -68,6 +69,7 @@ def bookingActivityForWeb(start_date,end_date):
 			for customer in res_out.customers:
 				res['title'] += customer.name
 				res['title'] += ","
+			res['title'] = res['title'][:-1]
 			res['color'] = "#1b70ef"
 			res['start'] = dt_to_string(res_out.check_out)
 			res['booking_id'] = str(res_out.id)
