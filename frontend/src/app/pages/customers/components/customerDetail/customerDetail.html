@@ -1,7 +1,7 @@
 <div *ngIf="shareService.showCustomerDetail" class="row">
   <ba-card title="{{_customersService.customerDetail.name}}" baCardClass="with-scroll table-panel">
     <div class="horizontal-scroll" >
-      <table title="{{_customersService.customerDetail.name}}"class="table table-condensed">
+      <table title="{{_customersService.customerDetail.name}}" class="table table-condensed">
         <thead>
         <tr>
             <th>Name</th>
@@ -19,10 +19,10 @@
           <td class="">
             {{_customersService.customerDetail.email}}
           </td>
-          <td *ngIf="_customersService.customerDetail.facebook" class="">
+          <td *ngIf="_customersService.customerDetail.facebook">
             {{_customersService.customerDetail.facebook}}
           </td>
-          <td *ngIf="_customersService.customerDetail.phone" class="">
+          <td *ngIf="_customersService.customerDetail.phone">
             {{_customersService.customerDetail.phone}}
           </td>
           <td class="">

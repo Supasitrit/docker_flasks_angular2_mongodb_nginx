@@ -107,6 +107,15 @@ export class bookingsTable implements OnInit {
       }
     )
   }
+  confirmedToString(confirm){
+    confirmStatus:string;
+    if(confirm){
+      confirmStatus = "yes";
+    }else{
+      confirmStatus = "no";
+    }
+    return confirmStatus;
+  }
   getBookings(){
     console.log("Status:  Getting bookings");
       this._bookingsService.getBookings().subscribe(
@@ -116,6 +125,7 @@ export class bookingsTable implements OnInit {
           for(var i=0;i<this.foundBookings.length;i++){
             this.foundBookings[i].check_in = this.foundBookings[i].check_in.substring(0,10);
             this.foundBookings[i].check_out = this.foundBookings[i].check_out.substring(0,10);
+            this.foundBookings[i].confirmed = confirmedToString(this.foundBookings[i].confirmed);
           }
           this.source.load(this.foundBookings);
         }
