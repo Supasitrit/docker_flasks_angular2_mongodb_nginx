@@ -5,6 +5,7 @@ export class Customer {
     name : string;
     phone_number : string;
     email: string;
+    customer_state: any;    
 }
 
 export class CreateCustomerRequest {

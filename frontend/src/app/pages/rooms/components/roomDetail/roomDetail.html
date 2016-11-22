@@ -55,7 +55,7 @@
           <tr *ngFor="let history of _roomsService.roomDetail.booking_history" class="{{confirmedStatus(history.confirmed)}}">
             <td> {{history.check_in.substring(0,10)}} </td>
             <td> {{history.check_out.substring(0,10)}} </td>
-            <td> {{history.confirmed}} </td>
+            <td> {{confirmedToString(history.confirmed)}} </td>
           </tr>
         </tbody>
       </table>
@@ -95,7 +95,7 @@
           </tr>
           <tr>
             <td>Confirm</td>
-            <td>{{_roomsService.roomDetail.current_booking.confirmed}}</td>
+            <td>{{confirmedToString(_roomsService.roomDetail.current_booking.confirmed)}}</td>
           </tr>
         </tbody>
       </table>

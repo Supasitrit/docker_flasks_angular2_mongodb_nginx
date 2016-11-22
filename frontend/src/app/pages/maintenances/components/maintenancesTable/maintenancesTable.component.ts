@@ -104,6 +104,7 @@ export class maintenancesTable implements OnInit {
             console.log(foundmaintenances);
             if(this.foundmaintenances[0]){
               this.changeImage(this.foundmaintenances[0].image);
+              this.shareService.currentMaintenance = foundmaintenances[0];
             }
             for(var i=0;i<this.foundmaintenances.length;i++){
               this.foundmaintenances[i].created_at = this.foundmaintenances[i].created_at.substring(0,10);

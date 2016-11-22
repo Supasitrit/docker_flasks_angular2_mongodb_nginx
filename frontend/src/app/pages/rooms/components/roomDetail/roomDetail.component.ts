@@ -29,6 +29,13 @@ export class roomDetail implements OnInit {
       this._showMaintenanceHistory = true;
     }
   }
+  confirmedToString(confirm){
+    if(confirm){
+      return "Confirmed";
+    }else{
+      return "Not Confirmed";
+    }
+  }
   confirmedStatus(status){
     if(status){
       //confirmed

@@ -8,6 +8,7 @@
             <th>Email</th>
             <th *ngIf="_customersService.customerDetail.facebook">Facebook</th>
             <th *ngIf="_customersService.customerDetail.phone">Phone</th>
+            <th *ngIf="_customersService.customerDetail.customer_state">Customer State</th>
             <th>Action</th>
         </tr>
         </thead>
@@ -24,6 +25,9 @@
           </td>
           <td *ngIf="_customersService.customerDetail.phone">
             {{_customersService.customerDetail.phone}}
+          </td>
+          <td *ngIf="_customersService.customerDetail.customer_state">
+            {{_customersService.customerDetail.customer_state}}
           </td>
           <td class="">
             <button type="button" (click)="goToEditCustomer()" class="btn btn-default btn-raised">
