@@ -19,7 +19,7 @@ def create_maintenance():
 	file = request.files['photo']
 	if file and allowed_file(file.filename):
 		img_url = upload_image(file,filename=file.filename)
-		img_url = "http://45.55.158.15/" + img_url
+		img_url = "http://128.199.104.193/images" + img_url
 		_maintenance.img_url = img_url
 	_maintenance.created_by = g.user
 	_maintenance.created_at = dt_now()
