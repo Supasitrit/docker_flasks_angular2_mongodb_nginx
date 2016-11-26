@@ -10,10 +10,10 @@ RUN apt-get install -y python-pip python-dev build-essential
 WORKDIR /app
 ADD ./backend/requirements.txt /app/requirements.txt
 RUN pip install -r /app/requirements.txt
-COPY . /app
+COPY ./backend /app
 # ENTRYPOINT ["python"]
 # RUN ls -la
-CMD ["/app/backend/run.py"]
+CMD ["/app/run.py"]
 
 # CMD ["nginx", "-g", "daemon off;"]
 
