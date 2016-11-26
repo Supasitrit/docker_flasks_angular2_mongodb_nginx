@@ -37,6 +37,13 @@ export class customerDetail implements OnInit {
             }
         )
   }
+  customerStateToString(state){
+    if(state == 1){
+      return "In a room";
+    }else{
+      return "Not in a room";
+    }
+  }
   ngOnInit() {
   }
 }

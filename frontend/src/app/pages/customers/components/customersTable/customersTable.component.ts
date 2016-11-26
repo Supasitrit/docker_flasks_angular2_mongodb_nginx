@@ -83,8 +83,8 @@ export class customersTable {
     // show customer detail panel
     this.shareService.showCustomerDetail = true;
 
-    // hide customer list
-    this.shareService.hideCustomerList = true;
+    // // hide customer list
+    // this.shareService.hideCustomerList = true;
 
     // show confirm delete
     this.shareService._askConfirmDelete = false;

@@ -116,6 +116,22 @@ export class bookingsTable implements OnInit {
       return "Not Confirmed";
     }
   }
+  roomTypeToString(type){
+    switch(type){
+    case 1:
+      return "Standard (1 big + 1 small)"
+    case 2:
+      return "Standard (3 small)"
+    case 3:
+      return "VIP (1 big + 1 small)"
+    case 4:
+      return "Deluxe (1 big)"
+    case 5:
+      return "Deluxe (2 small)"
+    case 6:
+      return "Single (1 small)"
+    }
+  }
   getBookings(){
     console.log("Status:  Getting bookings");
       this._bookingsService.getBookings().subscribe(

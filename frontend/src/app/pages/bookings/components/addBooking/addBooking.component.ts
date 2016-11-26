@@ -174,6 +174,7 @@ export class addBooking implements OnInit {
     this.roomsService.getAvailableRooms(RoomAvailabilityRequest).subscribe(
       foundRooms => {
         this.foundRooms = foundRooms;
+        this.newBooking.room_name = this.foundRooms[0].room_name;
         console.log(foundRooms);
       }
     )

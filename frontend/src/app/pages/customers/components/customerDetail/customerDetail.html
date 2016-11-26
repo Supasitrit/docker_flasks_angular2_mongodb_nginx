@@ -27,7 +27,7 @@
             {{_customersService.customerDetail.phone}}
           </td>
           <td *ngIf="_customersService.customerDetail.customer_state">
-            {{_customersService.customerDetail.customer_state}}
+            {{customerStateToString(_customersService.customerDetail.customer_state)}}
           </td>
           <td class="">
             <button type="button" (click)="goToEditCustomer()" class="btn btn-default btn-raised">

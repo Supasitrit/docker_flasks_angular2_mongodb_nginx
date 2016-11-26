@@ -26,3 +26,12 @@ services:
   mongodb:
     image: mongo
     restart: unless-stopped
+
+  mongodbClient:
+    image: mongoclient/mongoclient:1.4.0
+    ports:
+      - 8081:3000
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
