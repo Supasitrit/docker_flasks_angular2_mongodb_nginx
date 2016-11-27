@@ -32,7 +32,7 @@ export class editMaintenance implements OnInit {
       this.editMaintenance.maintenance_id = shareService.currentMaintenance.maintenance_id;
       this.editMaintenance.created_at = shareService.currentMaintenance.created_at.substring(0,10);
       this.editMaintenance.title = shareService.currentMaintenance.title;
-      // this.editMaintenance.photo = shareService.currentMaintenance.image;
+      // this.linkToFile(shareService.currentMaintenance.image);
       this.editMaintenance.room_name = shareService.currentMaintenance.room_name;
     }
   }
@@ -40,6 +40,7 @@ export class editMaintenance implements OnInit {
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.editMaintenance); }
+
   fileChangeEvent(fileInput: any){
       this.filesToUpload = <Array<File>> fileInput.target.files;
       console.log(this.filesToUpload);
