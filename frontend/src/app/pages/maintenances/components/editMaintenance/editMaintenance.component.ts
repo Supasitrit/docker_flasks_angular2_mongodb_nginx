@@ -28,9 +28,11 @@ export class editMaintenance implements OnInit {
     private shareService: shareService, private roomsService:roomsService) {
     this.editMaintenance = new EditMaintenanceRequest();
     if(this.shareService.currentMaintenance){
+      console.log(shareService.currentMaintenance);
+      this.editMaintenance.maintenance_id = shareService.currentMaintenance.maintenance_id;
       this.editMaintenance.created_at = shareService.currentMaintenance.created_at.substring(0,10);
       this.editMaintenance.title = shareService.currentMaintenance.title;
-      this.editMaintenance.photo = shareService.currentMaintenance.photo;
+      // this.editMaintenance.photo = shareService.currentMaintenance.image;
       this.editMaintenance.room_name = shareService.currentMaintenance.room_name;
     }
   }
@@ -54,7 +56,7 @@ export class editMaintenance implements OnInit {
   }
 
   onSubmit() {
-    this._maintenancesService.create(this.editMaintenance).subscribe(
+    this._maintenancesService.update(this.editMaintenance).subscribe(
             editMaintenanceResponse => {
               if(editMaintenanceResponse.success){
                 console.log(editMaintenanceResponse);

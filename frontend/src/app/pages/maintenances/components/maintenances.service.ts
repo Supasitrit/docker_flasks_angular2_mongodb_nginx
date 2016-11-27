@@ -74,6 +74,18 @@ export class maintenancesService {
                      .map((res:Response) => res.json())
                      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
+  update(editMaintenanceRequest){
+    console.log(editMaintenanceRequest);
+    var formData = new FormData;
+    formData.append("room_name", editMaintenanceRequest.room_name);
+    formData.append("photo", editMaintenanceRequest.photo);
+    formData.append("cost", editMaintenanceRequest.cost);
+    formData.append("title", editMaintenanceRequest.title);
+    
+    return this.http.put("maintenances/"+editMaintenanceRequest.maintenance_id, formData)
+                     .map((res:Response) => res.json())
+                     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
   public getmaintenances():Observable<Array<maintenance>>{
       return this.http.get("maintenances")
                        .map((res:Response) => res.json().maintenances)

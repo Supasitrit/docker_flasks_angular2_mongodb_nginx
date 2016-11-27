@@ -75,7 +75,7 @@ def edit_maintenance(maintenance_id):
 	file = request.files['photo']
 	if file and allowed_file(file.filename):
 		img_url = upload_image(file,filename=file.filename)
-		img_url = "http://"+serverUrl+"/" + img_url
+		img_url = "http://"+serverUrl+"/ams/images/" + img_url
 		_maintenance.img_url = img_url
 	_maintenance.created_by = g.user
 	_maintenance.modified_at = dt_now()
