@@ -16,8 +16,8 @@ from application.exceptions.simple_error import *
 def create_maintenance():
 	form = MaintenanceForm()
 	_maintenance = Maintenance()
-	file = request.files['photo']
-	if file and allowed_file(file.filename):
+	if 'photo' in request.files:
+		file = request.files['photo']
 		img_url = upload_image(file,filename=file.filename)
 		img_url = "http://45.55.158.15/" + img_url
 		_maintenance.img_url = img_url
@@ -64,8 +64,8 @@ def edit_maintenance(maintenance_id):
 	form = MaintenanceForm()
 	_room = getRoomDetail(_maintenance.room_name)
 	_room.maintenance_history.remove(_maintenance)
-	file = request.files['photo']
-	if file and allowed_file(file.filename):
+	if 'photo' in request.files:
+		file = request.files['photo']
 		img_url = upload_image(file,filename=file.filename)
 		img_url = "http://45.55.158.15/" + img_url
 		_maintenance.img_url = img_url
