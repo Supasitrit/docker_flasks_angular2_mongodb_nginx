@@ -4,6 +4,7 @@ export class Room {
     name: string;
     building :string;
     is_available : number;
+    room_state: string;
 }
 
 export class RoomDetail {
