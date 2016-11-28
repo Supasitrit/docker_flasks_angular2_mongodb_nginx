@@ -28,7 +28,7 @@ def create_maintenance():
 	_maintenance.created_at = dt_now()
 	_maintenance.title = form.title.data
 	_maintenance.cost = form.cost.data
-	_maintenance.room_name = form.room.name
+	_maintenance.room_name = form.room_name
 	_maintenance.save()
 	_room = form.room
 	_room.maintenance_history.append(_maintenance)
@@ -81,7 +81,7 @@ def edit_maintenance(maintenance_id):
 	_maintenance.modified_at = dt_now()
 	_maintenance.title = form.title.data
 	_maintenance.cost = form.cost.data
-	_maintenance.room_name = form.room.name
+	_maintenance.room_name = form.room_name
 	_maintenance.save()
 	_room.save()
 	form.room.maintenance_history.append(_maintenance)

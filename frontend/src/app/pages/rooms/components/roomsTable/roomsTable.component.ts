@@ -51,10 +51,10 @@ export class roomsTable implements OnInit {
       //   title: 'Name',
       //   type: 'string'
       // },
-      // available: {
-      //   title: 'Room Available',
-      //   type: 'string'
-      // },
+      is_available: {
+        title: 'Available',
+        type: 'string'
+      },
     }
   };
 
@@ -68,12 +68,22 @@ export class roomsTable implements OnInit {
     console.log("Status:  Show Detail (" + room.name + ")");
     this._roomsService.findRoomByName(room.name);
   }
+  roomStateToString(isAvailable){
+    if (isAvailable){
+      return "Yes"
+    }else{
+      return "No"
+    }
+  }
   getRooms(){
     console.log("Status:  Getting rooms");
       this._roomsService.getRooms().subscribe(
         foundRooms => {
-          this.foundRooms = foundRooms;
+          for(var i=0; i<foundRooms.length; i++){
+            foundRooms[i].is_available = this.roomStateToString(foundRooms[i].is_available);
+          }
           console.log(foundRooms);
+          this.foundRooms = foundRooms;
           this.source.load(this.foundRooms);
         }
       )
