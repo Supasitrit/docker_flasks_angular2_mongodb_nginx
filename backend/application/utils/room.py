@@ -22,7 +22,7 @@ def getRoomDetail(room_name):
     return res
 
 def getAvOfRoom(res):
-    current_booking = getCurrentBooking(dt_now(),dt_now(),res.room_name)
+    current_booking = getCurrentBooking(dt_now(),dt_now(),res.name)
     if current_booking:
         res.current_booking = current_booking
         res.is_available = False

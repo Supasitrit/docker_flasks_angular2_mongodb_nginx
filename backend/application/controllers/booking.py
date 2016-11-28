@@ -40,9 +40,6 @@ def create_booking():
 	_booking.created_at = dt_now()
 	_booking.modified_at = dt_now()
 	_booking.save()
-	for customer in form.customers:
-		customer.customer_state = 1
-		customer.save()
 	_room = getRoomDetail(form.room.name)
 	_room.booking_history.append(_booking)
 	_room.current_booking = _booking
@@ -93,9 +90,6 @@ def update_booking(booking_id):
 	form = BookingForm(_booking)
 	_room = getRoomDetail(_booking.room_name)
 	_room.booking_history.remove(_booking)
-	for customer in _booking.customers:
-		customer.customer_state = 1
-		customer.save()
 	_room = getRoomDetail(_booking.room_name)
 	_room.booking_history.remove(_booking)
 	_booking.customers = form.customers
@@ -111,9 +105,6 @@ def update_booking(booking_id):
 	_booking.modified_at = dt_now()
 	_booking.save()
 	_room.save()
-	for customer in _booking.customers:
-		customer.customer_state = 2
-		customer.save()
 	_room = getRoomDetail(form.room.name)
 	_room.booking_history.append(_booking)
 	_room.current_booking = _booking
