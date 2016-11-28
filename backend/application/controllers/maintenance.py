@@ -30,11 +30,10 @@ def create_maintenance():
 	_maintenance.cost = form.cost.data
 	if form.room:
 		_maintenance.room_name = form.room.name
+		_room.maintenance_history.append(_maintenance)
+		_room.modified_at = dt_now()
+		_room.save()
 	_maintenance.save()
-	_room = form.room
-	_room.maintenance_history.append(_maintenance)
-	_room.modified_at = dt_now()
-	_room.save()
 	maintenance = marshal(_maintenance,MaintenanceOutput)
 	return jsonify(success=True,maintenance=maintenance)
 
@@ -72,7 +71,9 @@ def edit_maintenance(maintenance_id):
 		raise BadRequestError("Maintenance does not exist")
 	form = MaintenanceForm()
 	_room = getRoomDetail(_maintenance.room_name)
-	_room.maintenance_history.remove(_maintenance)
+	if _room:
+		_room.maintenance_history.remove(_maintenance)
+		_room.save()
 	if 'photo' in request.files:
 		file = request.files['photo']
 		img_url = upload_image(file,filename=file.filename)
@@ -84,10 +85,9 @@ def edit_maintenance(maintenance_id):
 	_maintenance.cost = form.cost.data
 	if form.room:
 		_maintenance.room_name = form.room.name
+		form.room.maintenance_history.append(_maintenance)
+		form.room.save()
 	_maintenance.save()
-	_room.save()
-	form.room.maintenance_history.append(_maintenance)
-	form.room.save()
 	maintenance = marshal(_maintenance,MaintenanceOutput)
 	return jsonify(success=True,maintenance=maintenance)
 
