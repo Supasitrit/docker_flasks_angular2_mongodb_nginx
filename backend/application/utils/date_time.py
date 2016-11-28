@@ -5,7 +5,7 @@ def timestamp_to_dt(created_time):
     return datetime.datetime.utcfromtimestamp(int(created_time))
 
 def dt_now():
-    return datetime.datetime.utcnow()
+    return datetime.datetime.now()
 
 def string_to_dt(date):
 	try:

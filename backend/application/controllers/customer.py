@@ -19,7 +19,6 @@ def new_customer():
 	_customer.phone = form.phone.data
 	_customer.created_by = g.user
 	_customer.created_at = dt_now()
-	_customer.customer_state = 2
 	_customer.save()
 	customer = marshal(_customer,CustomerOutput)
 	return jsonify(success=True,customer=customer)

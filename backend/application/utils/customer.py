@@ -21,14 +21,14 @@ def getAvofCustomer(customer):
         customer.current = True
     else:
         customer.current = False
-    return res
+    return customer
 
 def getCustomerFromID(id):
 	res = Customer.objects(id=id).first()
 	return res
 
 def customerBooking(check_in,check_out,customer):
-	res = Booking.objects(Q(check_out__gt=check_in)&Q(check_in__lt=check_out)&Q(customers__in=customer)).first()
+	res = Booking.objects(Q(check_out__gt=check_in)&Q(check_in__lt=check_out)&Q(customers__contains=customer.id)).first()
 	return res
 
 

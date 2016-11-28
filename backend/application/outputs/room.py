@@ -5,7 +5,8 @@ from application.outputs.maintenance import *
 RoomOutput = {
     'room_number': fields.String,
     'building' :fields.String,
-    'name':fields.String
+    'name':fields.String,
+    'is_available' :fields.Boolean(default=True),
 }
 
 RoomDetailOutput = {
