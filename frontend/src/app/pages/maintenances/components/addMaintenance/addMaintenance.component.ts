@@ -32,13 +32,12 @@ export class addMaintenance implements OnInit {
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.newMaintenance); }
-  upload() {
-      // this._maintenancesService.upload(this.filesToUpload);
-  }
+  
   fileChangeEvent(fileInput: any){
       this.filesToUpload = <Array<File>> fileInput.target.files;
       console.log(this.filesToUpload);
       this.newMaintenance.photo = this.filesToUpload[0];
+      console.log(this.newMaintenance.photo);
   }
   getRooms(){
     console.log("Status: Getting Rooms");
