@@ -21,7 +21,7 @@ def getAvofCustomer(customer):
         customer.current = True
     else:
         customer.current = False
-    return res
+    return customer
 
 def getCustomerFromID(id):
 	res = Customer.objects(id=id).first()
