@@ -28,7 +28,7 @@ def getCustomerFromID(id):
 	return res
 
 def customerBooking(check_in,check_out,customer):
-	res = Booking.objects(Q(check_out__gt=check_in)&Q(check_in__lt=check_out)&Q(customers__in=customer)).first()
+	res = Booking.objects(Q(check_out__gt=check_in)&Q(check_in__lt=check_out)&Q(customers__in=customer._id)).first()
 	return res
 
 
