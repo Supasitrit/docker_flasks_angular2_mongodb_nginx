@@ -16,7 +16,6 @@ export class bookingsTable implements OnInit {
   foundBookingDetail:any;
   showBookingDetail:boolean;
   source: LocalDataSource = new LocalDataSource();
-
   settings = {
     actions: {
       add: false,
@@ -101,11 +100,37 @@ export class bookingsTable implements OnInit {
     console.log("Status:  Go to Detail (" + booking.booking_id + ")");
     this._bookingsService.getBookingDetail(booking.booking_id).subscribe(
       foundBookingDetail => {
+        for(var i=0;i<foundBookingDetail.length;i++){
+          this.foundBookingDetail[i].confirmed = this.confirmedToString(this.foundBookings[i].confirmed);
+        }
         this.foundBookingDetail = foundBookingDetail;
         console.log("foundBookingDetail");
         console.log(foundBookingDetail);
       }
     )
+  }
+  confirmedToString(confirm){
+    if(confirm){
+      return "Confirmed";
+    }else{
+      return "Not Confirmed";
+    }
+  }
+  roomTypeToString(type){
+    switch(type){
+    case 1:
+      return "Standard (1 big + 1 small)"
+    case 2:
+      return "Standard (3 small)"
+    case 3:
+      return "VIP (1 big + 1 small)"
+    case 4:
+      return "Deluxe (1 big)"
+    case 5:
+      return "Deluxe (2 small)"
+    case 6:
+      return "Single (1 small)"
+    }
   }
   getBookings(){
     console.log("Status:  Getting bookings");
@@ -116,6 +141,7 @@ export class bookingsTable implements OnInit {
           for(var i=0;i<this.foundBookings.length;i++){
             this.foundBookings[i].check_in = this.foundBookings[i].check_in.substring(0,10);
             this.foundBookings[i].check_out = this.foundBookings[i].check_out.substring(0,10);
+            this.foundBookings[i].confirmed = this.confirmedToString(this.foundBookings[i].confirmed);
           }
           this.source.load(this.foundBookings);
         }

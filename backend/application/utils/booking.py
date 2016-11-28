@@ -55,6 +55,8 @@ def bookingActivityForWeb(start_date,end_date):
 		for res_in in res_ins:
 			res = dict()
 			res['title'] = ""
+			res['title'] += res_in.room_name
+			res['title'] += ", "
 			for customer in res_in.customers:
 				res['title'] += customer.name
 				res['title'] += ","
@@ -66,6 +68,8 @@ def bookingActivityForWeb(start_date,end_date):
 		for res_out in res_outs:
 			res = dict()
 			res['title'] = ""
+			res['title'] += res_out.room_name
+			res['title'] += ", "
 			for customer in res_out.customers:
 				res['title'] += customer.name
 				res['title'] += ","

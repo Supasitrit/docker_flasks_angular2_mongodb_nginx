@@ -3,7 +3,7 @@ export class Room {
     room_number: string;
     name: string;
     building :string;
-    room_state : number;
+    is_available : number;
 }
 
 export class RoomDetail {

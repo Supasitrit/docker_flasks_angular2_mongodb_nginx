@@ -1,12 +1,17 @@
+<style>
+  th, tr, td{
+    text-align: left;
+}
+</style>
 <div class="widgets">
-  <div class="col-lg-12 col-md-12">
+  <div class="col-lg-12 col-md-12 col-xs-12">
     <!-- <ba-card title="List" baCardClass="with-scroll table-panel"> -->
       <rooms-table></rooms-table>
+      <room-detail *ngIf="_roomsService.roomDetail"></room-detail>
     <!-- </ba-card> -->
   </div>
-  <div class="col-lg-12 col-md-12" *ngIf="_roomsService.roomDetail">
+  <!--<div class="col-lg-12 col-md-12" >-->
     <!-- <ba-card title="Room Detail"  baCardClass="with-scroll table-panel"> -->
-      <room-detail></room-detail>
     <!-- </ba-card> -->
-  </div>
+  <!--</div>-->
 </div>

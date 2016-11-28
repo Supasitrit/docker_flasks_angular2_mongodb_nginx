@@ -23,7 +23,7 @@ export class CreateBookingRequest {
     customer_ids: string = "";
     room_name: string = "";
     room_type: any = "";
-    confirmed: boolean;
+    confirmed: any;
 }
 
 export class BookingActivity {

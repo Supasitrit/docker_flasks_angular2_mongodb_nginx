@@ -45,6 +45,9 @@ export class Calendar {
   public onCalendarReady(calendar):void {
     this._calendar = calendar;
   }
+  public onEventClick(event){
+    console.log(event.data);
+  }
   ngOnInit(){
     this.getData();
     this._calendarService.checkBackend().subscribe(

@@ -18,6 +18,7 @@ export class CreateMaintenanceRequest {
 }
 
 export class EditMaintenanceRequest {
+    maintenance_id: string;
     created_at: string;
     created_by: {name:string, user_id:string};
     room_name: string;

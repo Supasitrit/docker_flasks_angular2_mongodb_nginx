@@ -1,5 +1,5 @@
 <!-- <ba-card   baCardClass="with-scroll table-panel" > -->
-  <div class="horizontal-scroll"  *ngIf="_roomsService.roomDetail">
+  <!--<div class="horizontal-scroll"  *ngIf="_roomsService.roomDetail">-->
     <div class="row">
       <ba-card title="Room Detail of {{_roomsService.roomDetail.name}}" baCardClass="with-scroll table-panel">
         <table class="table table-bordered">
@@ -34,7 +34,7 @@
             </tr>
             <tr>
               <td>Room State</td>
-              <td>{{_roomsService.roomDetail.room_state}}</td>
+              <td>{{roomStateToString(_roomsService.roomDetail.is_available)}}</td>
             </tr>
           </tbody>
         </table>
@@ -48,14 +48,14 @@
           <tr>
             <td>Check in</td>
             <td>Check out</td>
-            <td>Confirmed</td>
+            <td>Confirmed Status</td>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let history of _roomsService.roomDetail.booking_history" class="{{confirmedStatus(history.confirmed)}}">
             <td> {{history.check_in.substring(0,10)}} </td>
             <td> {{history.check_out.substring(0,10)}} </td>
-            <td> {{history.confirmed}} </td>
+            <td> {{confirmedToString(history.confirmed)}} </td>
           </tr>
         </tbody>
       </table>
@@ -85,43 +85,43 @@
     <ba-card title="Current Booking" baCardClass="with-scroll table-panel">
       <table class="table table-bordered">
         <tbody>
-          <tr>
+          <tr *ngIf="_roomsService.roomDetail.current_booking.check_in">
             <td>Check In</td>
-            <td>{{_roomsService.roomDetail.current_booking.check_in}}</td>
+            <td >{{_roomsService.roomDetail.current_booking.check_in.substring(0,10)}}</td>
           </tr>
-          <tr>
+          <tr *ngIf="_roomsService.roomDetail.current_booking.check_out">
             <td>Check Out</td>
-            <td>{{_roomsService.roomDetail.current_booking.check_out}}</td>
+            <td>{{_roomsService.roomDetail.current_booking.check_out.substring(0,10)}}</td>
           </tr>
           <tr>
-            <td>Confirm</td>
-            <td>{{_roomsService.roomDetail.current_booking.confirmed}}</td>
+            <td>Confirm Status</td>
+            <td>{{confirmedToString(_roomsService.roomDetail.current_booking.confirmed)}}</td>
           </tr>
         </tbody>
       </table>
     </ba-card>
   </div>
     <!-- Current Customer -->
-  <div class="row" *ngIf="_roomsService.roomDetail.current_booking">
+  <div class="row" *ngIf="_roomsService.roomDetail.current_booking.customers">
     <ba-card title="Current Customer" baCardClass="with-scroll table-panel">
       <table class="table table-bordered">
         <thead>
           <tr>
             <td>Name</td>
             <td>Email</td>
-            <td>Customer State</td>
+            <!--<td>Customer State</td>-->
           </tr>
         </thead>
         <tbody>
             <tr *ngFor="let customer of _roomsService.roomDetail.current_booking.customers">
               <td>{{customer.name}}</td>
               <td>{{customer.email}}</td>
-              <td>{{customer.customer_state}}</td>
+              <!--<td>{{roomStateToString(customer.customer_state)}}</td>-->
             </tr>
         </tbody>
       </table>
     </ba-card>
   </div>
 
-</div>
+<!--</div>-->
 <!-- </ba-card> -->

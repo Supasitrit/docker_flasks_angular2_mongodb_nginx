@@ -83,8 +83,8 @@ export class customersTable {
     // show customer detail panel
     this.shareService.showCustomerDetail = true;
 
-    // hide customer list
-    this.shareService.hideCustomerList = true;
+    // // hide customer list
+    // this.shareService.hideCustomerList = true;
 
     // show confirm delete
     this.shareService._askConfirmDelete = false;
@@ -101,11 +101,21 @@ export class customersTable {
     console.log("Status:  Getting customers");
       this._customersService.getcustomers().subscribe(
         foundCustomers => {
+          for(var i=0;i<foundCustomers.length;i++){
+            foundCustomers[i].customer_state = this.customerStateToString(foundCustomers[i].customer_state);
+          }
           this.foundCustomers = foundCustomers;
           console.log(foundCustomers);
           this.source.load(this.foundCustomers);
         }
       )
+  }
+  customerStateToString(state){
+    if(state == 1){
+      return "In a room";
+    }else{
+      return "Not in a room";
+    }
   }
   customerForBooking(){
     this.getcustomers();

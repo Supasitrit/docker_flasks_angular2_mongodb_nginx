@@ -1,8 +1,8 @@
-<style>
+<!--<style>
   .row-title {
     width: 50%;
   }
-</style>
+</style>-->
 <div class="row">
   <ba-card title="" baCardClass="with-scroll large-buttons-panel">
     <div class="row btns-row btns-same-width-lg">
@@ -79,8 +79,8 @@
           <td class="" *ngIf="foundBookingDetail.check_out">{{foundBookingDetail.check_out.substring(0,10)}}</td>
         </tr>
         <tr  class="{{confirmedStatus(foundBookingDetail.confirmed)}}" >
-          <td class="row-title">Confirmed</td>
-          <td *ngIf="foundBookingDetail.confirmed">{{foundBookingDetail.confirmed}}</td>
+          <td class="row-title">Confirmed Status</td>
+          <td>{{confirmedToString(foundBookingDetail.confirmed)}}</td>
         </tr>
         <tr>
           <td class="row-title">Created at</td>
@@ -108,7 +108,7 @@
         </tr>
         <tr>
           <td class="row-title">Room Type</td>
-          <td class="">{{foundBookingDetail.room_type}}</td>
+          <td class="">{{roomTypeToString(foundBookingDetail.room_type)}}</td>
         </tr>
         </tbody>
       </table>
