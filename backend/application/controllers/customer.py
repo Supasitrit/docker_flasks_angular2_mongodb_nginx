@@ -31,7 +31,8 @@ def list_customers():
 	_customers = list()
 	_customers = all_customers()
 	for _customer in _customers:
-		customer = marshal(_customer,CustomerOutput)
+		resCustomer = getAvofCustomer(_customer)
+		customer = marshal(resCustomer,CustomerOutput)
 		customers.append(customer)
 	return jsonify(success=True,customers=customers)
 

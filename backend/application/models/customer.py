@@ -6,7 +6,7 @@ class Customer(db.Document):
 	email = db.StringField()
 	facebook = db.StringField()
 	phone = db.StringField()
-	customer_state = db.IntField()
+	current = db.BooleanField()
 	created_by = db.ReferenceField(User)
 	created_at = db.DateTimeField()
 	modified_at = db.DateTimeField()

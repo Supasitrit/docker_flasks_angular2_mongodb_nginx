@@ -4,6 +4,7 @@ from application.decorators.token import *
 from flask_restful import marshal
 from application.utils.date_time import *
 from application.utils.room import *
+from application.utils.booking import *
 from application.forms.room import *
 from application.outputs.room import *
 from application.exceptions.simple_error import *
@@ -30,7 +31,8 @@ def list_rooms():
 	_rooms = all_rooms()
 	rooms = list()
 	for _room in _rooms:
-		room = marshal(_room,RoomOutput)
+		_resRoom = getAvOfRoom(_room)
+		room = marshal(_resRoom,RoomOutput)
 		rooms.append(room)
 	return jsonify(success=True,rooms=rooms)
 

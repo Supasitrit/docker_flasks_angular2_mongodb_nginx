@@ -6,7 +6,7 @@ CustomerOutput = {
 	'email': fields.String,
 	'phone': fields.String,
 	'customer_id': fields.String(attribute="id"),
-	'customer_state': fields.Integer,
+	'current': fields.Boolean(default=False),
 	'created_at': fields.DateTime(dt_format='iso8601')
 }
 
@@ -17,7 +17,7 @@ CustomerDetailOutput = {
 	'phone': fields.String,
 	'created_at': fields.DateTime(dt_format='iso8601'),
 	'created_by':fields.Nested(UserOutput),
-	'customer_state':fields.Integer,
+	'current':fields.Boolean(default=False),
 	'modified_at':fields.DateTime(dt_format='iso8601'),
 	'customer_id': fields.String(attribute="id")
 }

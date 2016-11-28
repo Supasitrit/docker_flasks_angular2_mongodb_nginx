@@ -13,7 +13,6 @@ class RoomForm(Form):
 		self.validate()
 
 	def validate(self):
-
 		self.room = getRoomDetail(self.building.data + self.room_number.data)
 		if self.room != None:
 			raise BadRequestError("Sorry, this room already exist in the system")

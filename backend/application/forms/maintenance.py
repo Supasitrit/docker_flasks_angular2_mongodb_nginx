@@ -6,12 +6,11 @@ from application.utils.room import *
 class MaintenanceForm(Form):
 	room_name = StringField("room_name")
 	title = StringField("title")
-	cost = StringField("cost")
+	cost = DecimalField("cost")
 	def __init__(self, *args,**kwargs):
 		Form.__init__(self,*args,**kwargs)
 		self.validate()
 
 	def validate(self):
-		self.room = getRoomDetail(self.room_name.data)
-		if self.room == None:
-			raise BadRequestError("Incorrect Room Name")
+		if self.title.data == "":
+			raise BadRequestError("Invalid Title")

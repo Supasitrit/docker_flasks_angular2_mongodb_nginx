@@ -21,6 +21,16 @@ def getRoomDetail(room_name):
         res.is_available = True
     return res
 
+def getAvOfRoom(res):
+    current_booking = getCurrentBooking(dt_now(),dt_now(),res.room_name)
+    if current_booking:
+        res.current_booking = current_booking
+        res.is_available = False
+    else:
+        res.current_booking = None
+        res.is_available = True
+    return res
+
 def booking_history(room_name):
     result = Room.objects(name=room_name).only("booking_history").first().select_related()['booking_history']
     return result
