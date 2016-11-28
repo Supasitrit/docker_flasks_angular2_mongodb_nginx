@@ -13,7 +13,7 @@
 
 </div> -->
 <div class="row">
-  <ba-card title="" class="col-lg-6 col-md-6" *ngIf="showImage" baCardClass="with-scroll large-buttons-panel">
+  <ba-card title="" *ngIf="showImage" baCardClass="with-scroll large-buttons-panel">
     <img *ngIf="imageUrl" src="{{imageUrl}}" width="100%"alt="image not found">
     <button (click)="goToEditMaintenance()" type="button" class="btn btn-default btn-raised">
       Edit this record
@@ -21,7 +21,7 @@
   </ba-card>
 </div>
 <div class="row">
-  <ba-card title="" class="col-lg-12 col-md-12" baCardClass="with-scroll table-panel">
+  <ba-card title="" baCardClass="with-scroll table-panel">
     <!-- <div class="horizontal-scroll">
       <table class="table table-condensed">
         <thead>
