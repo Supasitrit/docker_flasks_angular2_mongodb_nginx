@@ -34,7 +34,7 @@ def create_maintenance():
 		form.room.maintenance_history.append(_maintenance)
 		form.room.modified_at = dt_now()
 		form.room.save()
-	
+	_maintenance.save()
 	maintenance = marshal(_maintenance,MaintenanceOutput)
 	return jsonify(success=True,maintenance=maintenance)
 
@@ -89,7 +89,7 @@ def edit_maintenance(maintenance_id):
 		_maintenance.room_name = form.room.name
 		form.room.maintenance_history.append(_maintenance)
 		form.room.save()
-	
+	_maintenance.save()
 	maintenance = marshal(_maintenance,MaintenanceOutput)
 	return jsonify(success=True,maintenance=maintenance)
 
