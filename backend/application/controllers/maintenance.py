@@ -30,9 +30,9 @@ def create_maintenance():
 	_maintenance.cost = form.cost.data
 	if form.room:
 		_maintenance.room_name = form.room.name
-		_room.maintenance_history.append(_maintenance)
-		_room.modified_at = dt_now()
-		_room.save()
+		form.room.maintenance_history.append(_maintenance)
+		form.room.modified_at = dt_now()
+		form.room.save()
 	_maintenance.save()
 	maintenance = marshal(_maintenance,MaintenanceOutput)
 	return jsonify(success=True,maintenance=maintenance)

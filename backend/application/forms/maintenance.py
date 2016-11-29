@@ -12,6 +12,6 @@ class MaintenanceForm(Form):
 		self.validate()
 
 	def validate(self):
-		if self.title.data == "":
+		if self.title.data == "" or self.title.data == None:
 			raise BadRequestError("Invalid Title")
 		self.room = getRoomDetail(self.room_name.data)
