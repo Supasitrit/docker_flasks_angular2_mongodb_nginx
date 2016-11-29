@@ -125,6 +125,10 @@ export class maintenancesTable implements OnInit {
             deleteMaintenanceResponse => {
               if(deleteMaintenanceResponse.success){
                 console.log(deleteMaintenanceResponse);
+                this.maintenanceTitle = null;
+                this.maintenanceRoomName = null;
+                this.imageUrl = null;
+                this.showImage = false;
                 this.router.navigate(['pages/maintenances']);
                 window.alert("Successfully deleted the maintenance record");
               }else{

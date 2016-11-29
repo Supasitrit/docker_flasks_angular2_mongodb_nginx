@@ -14,7 +14,7 @@ export class addMaintenance implements OnInit {
   errorMessage: string;
   foundRooms: any;
   filesToUpload: Array<File>;
-
+  defaultPicture: any;
   // public defaultPicture = 'assets/img/theme/no-photo.png';
   // public profile:any = {
   //   picture: 'assets/img/app/typography/typo06.png'
@@ -36,7 +36,9 @@ export class addMaintenance implements OnInit {
   fileChangeEvent(fileInput: any){
       this.filesToUpload = <Array<File>> fileInput.target.files;
       console.log(this.filesToUpload);
+      console.log(fileInput);
       this.newMaintenance.photo = this.filesToUpload[0];
+      this.defaultPicture = fileInput.target.value;
       console.log(this.newMaintenance.photo);
   }
   getRooms(){

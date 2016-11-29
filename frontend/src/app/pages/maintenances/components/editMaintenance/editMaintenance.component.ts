@@ -16,6 +16,7 @@ export class editMaintenance implements OnInit {
   errorMessage: string;
   foundRooms: any;
   filesToUpload: Array<File>;
+  defaultPicture: any;
 
 
   // public defaultPicture = 'assets/img/theme/no-photo.png';
@@ -32,6 +33,8 @@ export class editMaintenance implements OnInit {
       this.editMaintenance.maintenance_id = shareService.currentMaintenance.maintenance_id;
       this.editMaintenance.created_at = shareService.currentMaintenance.created_at.substring(0,10);
       this.editMaintenance.title = shareService.currentMaintenance.title;
+      this.editMaintenance.cost = shareService.currentMaintenance.cost;
+      this.defaultPicture = shareService.currentMaintenance.image;
       // this.linkToFile(shareService.currentMaintenance.image);
       this.editMaintenance.room_name = shareService.currentMaintenance.room_name;
     }
@@ -41,10 +44,20 @@ export class editMaintenance implements OnInit {
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.editMaintenance); }
 
+  protected _changePicture(file:File):void {
+    const reader = new FileReader();
+    reader.addEventListener('load', (event:Event) => {
+      this.defaultPicture = (<any> event.target).result;
+    }, false);
+    reader.readAsDataURL(file);
+  }
+
   fileChangeEvent(fileInput: any){
       this.filesToUpload = <Array<File>> fileInput.target.files;
       console.log(this.filesToUpload);
       this.editMaintenance.photo = this.filesToUpload[0];
+      // this.defaultPicture = this.editMaintenance.photo;
+      this._changePicture(this.filesToUpload[0]);
   }
   getRooms(){
     console.log("Status: Getting Rooms");
