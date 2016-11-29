@@ -13,11 +13,16 @@
 
 </div> -->
 <div class="row">
-  <ba-card title="" *ngIf="showImage" baCardClass="with-scroll large-buttons-panel">
-    <img *ngIf="imageUrl" src="{{imageUrl}}" width="100%"alt="image not found">
+  <ba-card class="col-lg-6 col-md-6" title="" *ngIf="maintenanceTitle" baCardClass="with-scroll large-buttons-panel">
+    <p>{{maintenanceTitle}}</p>
+    <label *ngIf="maintenanceRoomName">Room:</label><p>{{maintenanceRoomName}}</p>
     <button (click)="goToEditMaintenance()" type="button" class="btn btn-default btn-raised">
       Edit this record
     </button>
+  </ba-card>
+  <ba-card class="col-lg-6 col-md-6" title="" *ngIf="showImage" baCardClass="with-scroll large-buttons-panel">
+    <p>Image</p>
+    <img *ngIf="imageUrl" src="{{imageUrl}}" width="100%"alt="image not found">
   </ba-card>
 </div>
 <div class="row">
