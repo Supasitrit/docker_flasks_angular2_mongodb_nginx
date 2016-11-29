@@ -7,5 +7,6 @@ MaintenanceOutput = {
 	'title': fields.String(attribute="title"),
 	'created_at': fields.DateTime(dt_format='iso8601'),
 	'created_by':fields.Nested(UserOutput),
-	'room_name':fields.String()
+	'room_name':fields.String(),
+	'cost': fields.Float
 }
