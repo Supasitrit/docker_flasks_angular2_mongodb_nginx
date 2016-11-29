@@ -59,6 +59,10 @@ export class maintenancesTable implements OnInit {
         title: 'Title',
         type: 'string'
       },
+      cost: {
+        title: 'Cost',
+        type: 'string'
+      }
     }
   };
 
