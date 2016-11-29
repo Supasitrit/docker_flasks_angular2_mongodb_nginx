@@ -54,7 +54,7 @@ export class BaPictureUploader {
   }
 
   public bringFileSelector():boolean {
-    this.renderer.invokeElementMethod(this._fileUpload.nativeElement, 'click');
+    // this.renderer.invokeElementMethod(this._fileUpload.nativeElement, 'click');
     return false;
   }
 
