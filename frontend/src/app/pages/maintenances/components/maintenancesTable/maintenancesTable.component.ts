@@ -18,6 +18,8 @@ export class maintenancesTable implements OnInit {
   errorMessage: string;
   showImage: boolean;
   imageUrl: string;
+  maintenanceTitle: string;
+  maintenanceRoomName: string;
   source: LocalDataSource = new LocalDataSource();
 
   settings = {
@@ -67,6 +69,8 @@ export class maintenancesTable implements OnInit {
   onUserRowSelect(event): void {
     this.shareService.currentMaintenance = event.data;
     this.changeImage(event.data.image);
+    this.maintenanceTitle = event.data.title;
+    this.maintenanceRoomName = event.data.room_name;
   }
   onDeleteConfirm(event): void {
     if (window.confirm('Are you sure you want to delete?')) {
@@ -105,6 +109,8 @@ export class maintenancesTable implements OnInit {
             if(this.foundmaintenances[0]){
               this.changeImage(this.foundmaintenances[0].image);
               this.shareService.currentMaintenance = foundmaintenances[0];
+              this.maintenanceTitle = this.shareService.currentMaintenance.title;
+              this.maintenanceRoomName = this.shareService.currentMaintenance.room_name;
             }
             for(var i=0;i<this.foundmaintenances.length;i++){
               this.foundmaintenances[i].created_at = this.foundmaintenances[i].created_at.substring(0,10);
