@@ -48,6 +48,10 @@ export class customersTable {
         title: 'E-mail',
         type: 'string'
       },
+      phone: {
+        title: 'Phone',
+        type: 'string'
+      },
       customer_state: {
         title: 'Customer state',
         type: 'string'
@@ -102,7 +106,7 @@ export class customersTable {
       this._customersService.getcustomers().subscribe(
         foundCustomers => {
           for(var i=0;i<foundCustomers.length;i++){
-            foundCustomers[i].customer_state = this.customerStateToString(foundCustomers[i].customer_state);
+            foundCustomers[i].customer_state = this.customerStateToString(foundCustomers[i].current);
           }
           this.foundCustomers = foundCustomers;
           console.log(foundCustomers);
@@ -111,7 +115,7 @@ export class customersTable {
       )
   }
   customerStateToString(state){
-    if(state == 1){
+    if(state){
       return "In a room";
     }else{
       return "Not in a room";

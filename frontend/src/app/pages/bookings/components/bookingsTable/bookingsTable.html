@@ -78,7 +78,7 @@
           <td class="row-title">Checkout</td>
           <td class="" *ngIf="foundBookingDetail.check_out">{{foundBookingDetail.check_out.substring(0,10)}}</td>
         </tr>
-        <tr  class="{{confirmedStatus(foundBookingDetail.confirmed)}}" >
+        <tr class="{{confirmedStatus(foundBookingDetail.confirmed)}}" >
           <td class="row-title">Confirmed Status</td>
           <td>{{confirmedToString(foundBookingDetail.confirmed)}}</td>
         </tr>
@@ -99,7 +99,7 @@
           <td class="" *ngIf="foundBookingDetail.modiefied_at">{{foundBookingDetail.modiefied_at.substring(0,10)}}</td>
         </tr>
         <tr>
-          <td class="row-title">PPM</td>
+          <td class="row-title">Price Per Month</td>
           <td class="">{{foundBookingDetail.ppm}}</td>
         </tr>
         <tr>

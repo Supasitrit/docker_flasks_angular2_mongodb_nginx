@@ -5,6 +5,7 @@ export class Customer {
     name : string;
     phone_number : string;
     email: string;
+    current: any;
     customer_state: any;    
 }
 
