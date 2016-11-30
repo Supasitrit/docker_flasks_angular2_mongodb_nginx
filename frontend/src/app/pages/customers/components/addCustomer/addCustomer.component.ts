@@ -22,6 +22,7 @@ export class addCustomer implements OnInit {
     this.router.navigate(['pages/customers']);
   }
   onSubmit() {
+    this.newCustomer.phone = this.newCustomer.phone.ToString();
     this._customersService.create(this.newCustomer).subscribe(
             createCustomerResponse => {
               console.log(createCustomerResponse);

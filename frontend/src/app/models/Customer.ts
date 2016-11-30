@@ -14,11 +14,13 @@ export class CreateCustomerRequest {
     phone_number: string;
     email:string;
     facebook:string;
+    phone: any;
 }
 
 export class EditCustomerRequest {
     name: string;
     phone_number: string;
+    phone: any;
     email:string;
     facebook:string;
     id: string;

@@ -32,6 +32,7 @@ export class editCustomer implements OnInit {
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.editCustomer); }
   onSubmit() {
+    this.editCustomer.phone = this.editCustomer.phone.ToString();
     this._customersService.edit(this.editCustomer).subscribe(
             createCustomerResponse => {
               console.log(createCustomerResponse);
