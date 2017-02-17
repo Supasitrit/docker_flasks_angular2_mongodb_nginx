@@ -2,9 +2,9 @@ import {Optional,Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {tokenService} from './tokenService';
 
-const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'development';
-// const urlPrefix = env === 'production' ? 'http://128.199.104.193/ams/' : 'http://localhost/ams/';
-const urlPrefix = 'http://128.199.104.193/ams/';
+// const env = process.env.NODE_ENV ? process.env.NODE_ENV : 'development';
+const urlBackend = '<insert ip here>';
+const urlPrefix = 'http://'+urlBackend+'/ams/';
 // const urlPrefix = 'http://localhost/ams/';
 
 
