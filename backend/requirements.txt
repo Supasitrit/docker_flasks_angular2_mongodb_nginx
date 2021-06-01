@@ -18,6 +18,6 @@ pytz==2016.7
 requests==2.12.1
 six==1.10.0
 typing==3.5.2.2
-urllib3==1.19.1
+urllib3==1.26.5
 Werkzeug==0.11.11
 WTForms==2.1
